@@ -26,11 +26,15 @@ jobs:
       if: startsWith(matrix.os, 'ubuntu')
       run: |
           sudo apt-get install openjdk-8-jdk
+          java -version
           wget https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
           sudo mv apache-maven-3.6.3-bin.tar.gz /usr/local/
           cd /usr/local/
           sudo tar -zxvf apache-maven-3.6.3-bin.tar.gz
+          sudo echo -e "export M2_HOME=/usr/local/apache-maven-3.6.3" >> /etc/profile
+          sudo echo -e "export PATH=${M2_HOME}/bin:$PATH" >> /etc/profile
           source /etc/profile
+          mvn -v
     - name: Build
       run: |
         cd /runner/work/eclipse-plugins.git
