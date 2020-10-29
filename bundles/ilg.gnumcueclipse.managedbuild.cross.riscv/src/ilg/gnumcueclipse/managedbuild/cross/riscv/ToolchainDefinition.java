@@ -30,7 +30,9 @@ public class ToolchainDefinition {
 	// 512258282
 	public static final String GME_RISCV_GCC = "GNU MCU RISC-V GCC";
 
-	public static final String DEFAULT_TOOLCHAIN_NAME = GME_RISCV_GCC;
+	public static final String ASR_RISCV_GCC = "RISC-V ASR GCC";
+
+	public static final String DEFAULT_TOOLCHAIN_NAME = ASR_RISCV_GCC;
 
 	// ------------------------------------------------------------------------
 
@@ -331,7 +333,8 @@ public class ToolchainDefinition {
 	// Initialise the list of known toolchains
 	static {
 		fgList = new ArrayList<ToolchainDefinition>();
-
+                //asr
+		fgList.add(new ToolchainDefinition(ASR_RISCV_GCC, "riscv-asr-elf-"));
 		// 0
 		fgList.add(new ToolchainDefinition(GME_RISCV_GCC, "riscv-none-embed-"));
 
